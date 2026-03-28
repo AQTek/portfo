@@ -1,133 +1,525 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>#000000</title>
-    <link type="image/x-icon" rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAHklEQVQ4T2NkYGD4z0ABYBw1gGE0DBhGw4BhWIQBAE5OEAELnjVHAAAAAElFTkSuQmCC">
-    <style>
-        :root {
-            --color: #000000;
-            --color-transparent: #00000022;
-        }
-
-        ::selection {
-            background: var(--color-transparent);
-        }
-
-        html,
-        body {
-            background: var(--color);
-            height: 100%;
-            margin: 0;
-        }
-
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        #color {
-            background: white;
-            color: var(--color);
-            font-size: 2.5rem;
-            font-weight: 300;
-            padding: 2.25rem 3rem;
-            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-            cursor: text;
-        }
-    </style>
+    <title>John Doe | Python Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <p id="color">#000000</p>
-    <script>
-        function randomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo"><Dev /></a>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-        function hslToHex(h, s, l) {
-            h /= 360;
-            s /= 100;
-            l /= 100;
-            var r = void 0,
-                g = void 0,
-                b = void 0;
-            if (s === 0) {
-                r = g = b = l; // achromatic
-            } else {
-                var hue2rgb = function hue2rgb(p, q, t) {
-                    if (t < 0) t += 1;
-                    if (t > 1) t -= 1;
-                    if (t < 1 / 6) return p + (q - p) * 6 * t;
-                    if (t < 1 / 2) return q;
-                    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-                    return p;
-                };
-                var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-                var p = 2 * l - q;
-                r = hue2rgb(p, q, h + 1 / 3);
-                g = hue2rgb(p, q, h);
-                b = hue2rgb(p, q, h - 1 / 3);
-            }
-            var toHex = function toHex(x) {
-                var hex = Math.round(x * 255).toString(16);
-                return hex.length === 1 ? '0' + hex : hex;
-            };
-            return '#' + toHex(r) + toHex(g) + toHex(b);
-        }
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <p class="hero-greeting">Hello, I'm</p>
+            <h1 class="hero-name">John Doe</h1>
+            <h2 class="hero-title">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+            </h2>
+            <p class="hero-description">
+                Building robust, scalable, and elegant solutions with Python.
+                Passionate about clean code, open source, and continuous learning.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+            <div class="hero-social">
+                <a href="https://github.com" target="_blank" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll Down</p>
+        </div>
+    </section>
 
-        window.onload = function () {
-            let stopProp = function (ev) {
-                ev.stopPropagation();
-            }
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <div class="image-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="#636E72">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="about-text fade-in">
+                    <h3>Python Developer & Backend Engineer</h3>
+                    <p>
+                        I'm a passionate Python developer with over 5 years of experience building
+                        web applications, APIs, and automation tools. I specialize in creating
+                        robust backend systems using Django and Flask, and I love working with
+                        data-driven applications.
+                    </p>
+                    <p>
+                        My journey in software development started with a curiosity about how
+                        things work behind the scenes. Since then, I've worked with startups and
+                        established companies to deliver scalable solutions that make a real impact.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            var colorElement = document.getElementById("color");
-            colorElement.addEventListener("click", stopProp, false);
-            colorElement.addEventListener("mousedown", stopProp, false);
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3 class="category-title">Frameworks & Libraries</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Django / DRF</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Flask</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">FastAPI</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3 class="category-title">Tools & Platforms</h3>
+                    <div class="skill-bars">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">PostgreSQL</span>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git / GitHub</span>
+                                <span class="skill-percent">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tech-icons fade-in">
+                <div class="tech-icon" title="Python">
+                    <svg viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="#3776AB" d="M12 0c-6.627 0-12 5.373-12 12v4.5h-1.5v4.5h3v-4.5h3v-3h-3v-1.5c0-2.481 2.019-4.5 4.5-4.5s4.5 2.019 4.5 4.5v1.5h1.5v-1.5c0-6.627-5.373-12-12-12zm-3 4.5c-.828 0-1.5.672-1.5 1.5v1.5h3v-1.5c0-.828-.672-1.5-1.5-1.5zm6 0c-.828 0-1.5.672-1.5 1.5v3c0 .828.672 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3c0-.828-.672-1.5-1.5-1.5z"/>
+                    </svg>
+                    <span>Python</span>
+                </div>
+                <div class="tech-icon" title="Django">
+                    <span class="django-icon">D</span>
+                    <span>Django</span>
+                </div>
+                <div class="tech-icon" title="Flask">
+                    <span class="flask-icon">Fl</span>
+                    <span>Flask</span>
+                </div>
+                <div class="tech-icon" title="PostgreSQL">
+                    <svg viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="#336791" d="M17.731 8.621c-.002-.322-.009-.406-.009-.643 0-1.475.006-2.706-.008-3.815-.014-1.15-.259-1.951-1.319-2.397-.437-.184-.952-.227-1.771-.12l-3.056.001c-.363-.142-.78-.201-1.315-.201-.522 0-1.023.062-1.351.217-.245.115-.527.355-.693.707-.171.361-.22.775-.22 1.291v.007l-.002.017c-.03.193-.044.389-.044.594 0 1.184-.008 2.42.009 3.642.014.978.267 1.786 1.426 2.207.439.159.964.19 1.772.09l3.056-.001c.363.139.778.196 1.311.196.541 0 1.032-.063 1.365-.222.242-.115.52-.35.685-.698.167-.353.217-.763.217-1.268-.001-.521.002-1.114-.002-1.804z"/>
+                    </svg>
+                    <span>PostgreSQL</span>
+                </div>
+                <div class="tech-icon" title="Docker">
+                    <svg viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="#2496ED" d="M13.983 11.078h2.119c.127 0 .23-.103.23-.23v-1.085a.23.23 0 0 0-.23-.231h-2.119a.23.23 0 0 0-.23.231v1.085c0 .127.103.23.23.23zM8.164 8.073h2.119c.127 0 .23-.104.23-.231V6.757a.23.23 0 0 0-.23-.23H8.164a.23.23 0 0 0-.23.23v1.085c0 .127.103.231.23.231zM8.164 13.16h2.119c.127 0 .23-.103.23-.23v-1.085a.23.23 0 0 0-.23-.231H8.164a.23.23 0 0 0-.23.231v1.085c0 .127.103.23.23.23zM13.983 16.234h2.119c.127 0 .23-.103.23-.23v-1.085a.23.23 0 0 0-.23-.231h-2.119a.23.23 0 0 0-.23.231v1.085c0 .127.103.23.23.23z"/>
+                    </svg>
+                    <span>Docker</span>
+                </div>
+                <div class="tech-icon" title="Git">
+                    <svg viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="#F05032" d="M23.546 12.145l-7.73-8.288c-.37-.39-.967-.39-1.335 0l-3.894 4.17a1.045 1.045 0 0 0 0 1.52l7.73 8.288c.37.39.967.39 1.335 0l3.894-4.17a1.045 1.045 0 0 0 0-1.52zM12.72 13.615L8.85 11.12 6.9 14.56l2.07 1.548z"/>
+                    </svg>
+                    <span>Git</span>
+                </div>
+                <div class="tech-icon" title="AWS">
+                    <svg viewBox="0 0 24 24" width="40" height="40">
+                        <path fill="#FF9900" d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.296.063-.583.159-.862.279a2.287 2.287 0 0 1-.28.096.49.49 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.39c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167c.279-.144.614-.263 1.005-.36a4.84 4.84 0 0 1 1.102-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144.287-.096.535-.223.734-.398a1.6 1.6 0 0 0 .408-.55c.08-.2.12-.43.12-.68 0-.263-.048-.487-.144-.655a1.176 1.176 0 0 0-.423-.447 2.12 2.12 0 0 0-.639-.263 3.24 3.24 0 0 0-.823-.104c-.536 0-.926.151-1.19.447-.263.295-.391.678-.391 1.14 0 .247.056.47.168.654.112.176.288.335.519.455.231.12.503.223.822.28.31.05.607.072.878.072z"/>
+                    </svg>
+                    <span>AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            var setFavicon = function (hex) {
-                var canvas = document.createElement('canvas');
-                canvas.width = 16;
-                canvas.height = 16;
-                var ctx = canvas.getContext('2d');
-                ctx.fillStyle = hex;
-                ctx.fillRect(0, 0, 16, 16);
-                document.getElementsByTagName('link')[0].href = canvas.toDataURL("image/x-icon");
-            }
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="#636E72">
+                                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Web Ticket System</h3>
+                        <p class="project-description">
+                            A comprehensive support ticket management system built with Django.
+                            Features include ticket creation, assignment, status tracking, and
+                            automated email notifications.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Django</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">Celery</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="#636E72">
+                                <path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-time Chat Application</h3>
+                        <p class="project-description">
+                            A modern messaging platform with real-time communication using WebSockets.
+                            Supports one-on-one and group chats, file sharing, and message encryption.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Flask</span>
+                            <span class="tag">Socket.IO</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="#636E72">
+                                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Invoice Generator</h3>
+                        <p class="project-description">
+                            An automated billing and invoice generation system. Creates professional
+                            PDF invoices, manages clients, tracks payments, and generates financial reports.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">SQLAlchemy</span>
+                            <span class="tag">WeasyPrint</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="#636E72">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Open Source Contributions</h3>
+                        <p class="project-description">
+                            Active contributor to various Python open source projects including
+                            Django, Flask, and several utility libraries. Focused on improving
+                            documentation and bug fixes.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Open Source</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">PyPI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                View Profile
+                            </a>
+                            <a href="#" class="project-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Explore Projects
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            var setRandomColor = function setRandomColor() {
-                var h = void 0,
-                    s = void 0,
-                    l = void 0;
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        I'm always interested in hearing about new projects and opportunities.
+                        Whether you have a question or just want to say hi, feel free to reach out!
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            <span>john.doe@email.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                            </svg>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="https://github.com" target="_blank" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form fade-in" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Project Inquiry">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-                h = randomInt(0, 359);
-                s = randomInt(55, 75);
-                l = randomInt(40, 60);
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">Designed & Built by John Doe</p>
+                <p class="footer-copyright">Copyright 2024. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-                document.documentElement.style.setProperty('--color', 'hsl(' + h + ', ' + s + '%, ' + l + '%)');
-                var hex = hslToHex(h, s, l);
-                document.title = hex;
-                colorElement.innerHTML = hex;
-                document.documentElement.style.setProperty('--color-transparent', hex + '22');
-
-                setFavicon(hex);
-            };
-            setRandomColor();
-
-            var body = document.getElementsByTagName("body")[0];
-            body.addEventListener("mousedown", function (ev) {
-                ev.preventDefault();
-            });
-            body.addEventListener("click", function () {
-                setRandomColor();
-            }, false);
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
-
 </html>
